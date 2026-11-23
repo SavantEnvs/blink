@@ -1,0 +1,5 @@
+# Per-Dockerfile ignore for `docker build -f mayhem/Dockerfile .` (keeps .git: the grader needs history)
+o/
+config.h
+config.mk
+config.log

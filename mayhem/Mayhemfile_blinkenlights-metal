@@ -1,0 +1,12 @@
+project: savantenvs/blink
+target: blinkenlights-metal
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/blinkenlights-metal/testsuite
+cmds:
+  # -r: boot the input as a real-mode (i8086) boot sector with blink's BIOS;
+  # -t: no TUI, just execute
+  # blinkenlights only loads a boot sector whose name ends in .bin; this build runs
+  # the input as *.bin (mayhem/harnesses/exec_input_main.c, BLINK_INPUT_EXT)
+  - cmd: /mayhem/o/fz/fuzz/blinkenlights -r -t @@
+    timeout: 5

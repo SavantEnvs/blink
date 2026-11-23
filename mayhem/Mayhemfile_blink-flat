@@ -1,0 +1,12 @@
+project: savantenvs/blink
+target: blink-flat
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/blink-flat/testsuite
+cmds:
+  # blink loads a file as a raw flat x86-64 image only when its name ends in .bin;
+  # this build of the blink CLI always runs its copy of the input as *.bin
+  # (mayhem/harnesses/exec_input_main.c, BLINK_INPUT_EXT)
+  # -m: no linear memory (see Mayhemfile_blink-elf)
+  - cmd: /mayhem/o/fz/fuzz/blink-flat -m @@
+    timeout: 5

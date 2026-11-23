@@ -1,0 +1,8 @@
+project: savantenvs/blink
+target: diself
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/diself/testsuite
+cmds:
+  - cmd: /mayhem/o/fz/fuzz/fuzz_diself
+    libfuzzer: true

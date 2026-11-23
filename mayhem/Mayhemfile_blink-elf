@@ -1,0 +1,10 @@
+project: savantenvs/blink
+target: blink-elf
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/blink-elf/testsuite
+cmds:
+  # -m: no linear memory (guest pages are not mapped at fixed host addresses,
+  # which fail under Mayhem's runner; blinkenlights already defaults to this)
+  - cmd: /mayhem/o/fz/fuzz/blink -m @@
+    timeout: 5
